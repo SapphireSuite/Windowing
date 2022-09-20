@@ -29,7 +29,7 @@ target_include_directories(SA_Windowing PUBLIC Include)
 target_include_directories(SA_Windowing PRIVATE Include/SA/Windowing)
 
 ### Link dependencies.
-target_link_libraries(SA_Windowing PUBLIC SA_Logger)
+target_link_libraries(SA_Windowing PUBLIC SA_Logger SA_Flags SA_Event SA_Maths SA_HI)
 
 
 
