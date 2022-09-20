@@ -19,8 +19,8 @@ SA_ConfigureProject(SA_Windowing)
 add_library(SA_Windowing STATIC)
 SA_ConfigureTarget(TARGET SA_Windowing)
 SA_TargetSources(TARGET SA_Windowing
-	PUBLIC_FOLDER "Include/SA/Base"
-	PRIVATE_FOLDER "Source/SA/Base"
+	PUBLIC_FOLDER "Include/SA/Windowing/Base"
+	PRIVATE_FOLDER "Source/SA/Windowing/Base"
 	TOGGLE_INCLUDE_DIR OFF
 )
 
