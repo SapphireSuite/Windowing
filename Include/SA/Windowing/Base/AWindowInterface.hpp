@@ -5,15 +5,37 @@
 #ifndef SAPPHIRE_WINDOWING_AWINDOW_INTERFACE_GUARD
 #define SAPPHIRE_WINDOWING_AWINDOW_INTERFACE_GUARD
 
+#include <SA/HI/Interface.hpp>
+
+#include "AWindow.hpp"
+
 namespace SA
 {
-	class AWindowInterface
+	class AWindowInterface : private HI::Interface
 	{
-	public:
-		virtual ~AWindowInterface() = default;
+	protected:
+		using HI::Interface::CheckCreated;
 
-		virtual void Create() = 0;
-		virtual void Destroy() = 0;
+	public:
+		void Create() override;
+		void Destroy() override;
+
+		/**
+		*	Create window with interface implementation.
+		* 
+		*	\param[in] _infos	Create infos
+		* 
+		*	\return Created window.
+		*/
+		virtual AWindow* CreateWindow(const WindowCreateInfos& _infos = WindowCreateInfos()) = 0;
+
+		/**
+		*	\brief Destroy window from interface.
+		*	Window must have been created from this interface.
+		* 
+		*	\param[in] _window	Window to destroy.
+		*/
+		virtual void DestroyWindow(AWindow* _window) = 0;
 	};
 }
 
