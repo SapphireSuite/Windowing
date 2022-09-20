@@ -11,7 +11,7 @@ using namespace SA;
 
 #endif // SA_WINDOWING_GLFW
 
-#define MULTITHREAD_OPT 1
+#define MULTITHREAD_OPT 0
 
 #if MULTITHREAD_OPT
 
@@ -21,12 +21,12 @@ using namespace SA;
 std::list<std::thread> threads;
 LoggerThread logger;
 
-#define SA_WINDOWING_THREAD_BEGIN(_renderInterfaceT) threads.emplace_back(std::thread([](){
+#define SA_WINDOWING_THREAD_BEGIN(_windowInterfaceT) threads.emplace_back(std::thread([](){
 #define SA_WINDOWING_THREAD_END() }));
 
 #else
 
-#define SA_WINDOWING_THREAD_BEGIN(_renderInterfaceT) SA_LOG()
+#define SA_WINDOWING_THREAD_BEGIN(_windowInterfaceT) SA_LOG("Begin" #_windowInterfaceT)
 #define SA_WINDOWING_THREAD_END()
 
 #endif
@@ -59,7 +59,7 @@ int main()
 
 #if SA_WINDOWING_GLFW
 
-	main_render<GLFW::WindowInterface>();
+	main_windowing<GLFW::WindowInterface>();
 
 #endif // SA_WINDOWING_GLFW
 
