@@ -10,6 +10,7 @@
 #include <SA/HI/InterfaceList.hpp>
 
 #include "GLFWWindow.hpp"
+#include "GLFWInputInterface.hpp"
 
 namespace SA
 {
@@ -17,6 +18,8 @@ namespace SA
 	{
 		class WindowInterface : public AWindowInterface
 		{
+			InputInterface input;
+
 			HI::InterfaceList<Window> mWindows;
 
 		public:
@@ -24,6 +27,8 @@ namespace SA
 			void Destroy() override final;
 
 			void Clear() override final;
+
+			AInputInterface* GetInputInterface() override final;
 
 			AWindow* CreateWindow(const WindowCreateInfos& _infos) override final;
 			void DestroyWindow(AWindow* _window) override final;

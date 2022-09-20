@@ -45,10 +45,11 @@ int main_common(AWindowInterface* _interface, bool bInitLogger)
 
 #if !SA_CI
 
-	//while (!window->ShouldClose())
+	while (!window->ShouldClose())
 
 #endif
 	{
+		_interface->GetInputInterface()->Update();
 	}
 
 

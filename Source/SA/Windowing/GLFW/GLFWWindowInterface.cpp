@@ -21,12 +21,16 @@ namespace SA
 
 			SA_ASSERT_EXEC(Default, SA/Windowing/GLFW, glfwInit(), L"GLFW init failed!");
 
+			input.Create();
+
 			SA_LOG(L"Window Interface created.", Infos, SA/Windowing/GLFW);
 		}
 
 		void WindowInterface::Destroy()
 		{
 			AWindowInterface::Destroy();
+
+			input.Destroy();
 
 			glfwTerminate();
 
@@ -38,9 +42,17 @@ namespace SA
 		{
 			AWindowInterface::Clear();
 
+			input.Clear();
+
 			mWindows.Clear();
 			
 			SA_LOG(L"Window Interface cleared.", Infos, SA/Windowing/GLFW);
+		}
+
+
+		AInputInterface* WindowInterface::GetInputInterface()
+		{
+			return &input;
 		}
 
 

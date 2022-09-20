@@ -8,6 +8,7 @@
 #include <SA/HI/Interface.hpp>
 
 #include "AWindow.hpp"
+#include "AInputInterface.hpp"
 
 namespace SA
 {
@@ -21,6 +22,8 @@ namespace SA
 		void Destroy() override;
 
 		void Clear() override;
+
+		virtual AInputInterface* GetInputInterface() = 0;
 
 		/**
 		*	Create window with interface implementation.
