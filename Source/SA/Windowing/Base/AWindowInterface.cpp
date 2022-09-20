@@ -13,4 +13,9 @@ namespace SA
 	{
 		HI::Interface::Destroy();
 	}
+
+	void AWindowInterface::Clear()
+	{
+		HI::Interface::Clear();
+	}
 }

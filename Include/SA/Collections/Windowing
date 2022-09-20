@@ -1,0 +1,13 @@
+// Copyright (c) 2022 Sapphire's Suite. All Rights Reserved.
+
+#pragma once
+
+#ifndef SAPPHIRE_WINDOWING_COLLECTIONS_WINDOWING_GUARD
+#define SAPPHIRE_WINDOWING_COLLECTIONS_WINDOWING_GUARD
+
+#include <SA/Windowing/Base/AWindow.hpp>
+#include <SA/Windowing/Base/AWindowInterface.hpp>
+
+#include "Windowing_GLFW"
+
+#endif // SAPPHIRE_WINDOWING_COLLECTIONS_WINDOWING_GUARD

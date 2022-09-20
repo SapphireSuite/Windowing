@@ -20,6 +20,8 @@ namespace SA
 		void Create() override;
 		void Destroy() override;
 
+		void Clear() override;
+
 		/**
 		*	Create window with interface implementation.
 		* 
