@@ -44,8 +44,8 @@ option(SA_WINDOWING_GLFW_OPT "Should compile GLFW wrapper" ON)
 
 if(SA_WINDOWING_GLFW_OPT)
 
-	find_package(glfw3 REQUIRED FATAL_ERROR)
-	target_link_libraries(SA_Windowing PUBLIC glfw)
+	# Compile git submodule ThirdParty/glfw instead
+	#find_package(glfw3 REQUIRED FATAL_ERROR)
 
 	target_compile_definitions(SA_Windowing PUBLIC SA_WINDOWING_GLFW)
 	SA_TargetSources(TARGET SA_Windowing
