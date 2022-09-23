@@ -10,7 +10,7 @@ add_executable(SA_WindowingProto_GLFW "main.cpp")
 # Dependencies
 
 ### Add library dependencies.
-target_link_libraries(SA_WindowingProto_GLFW PRIVATE SA_WindowingProto_Common)
+target_link_libraries(SA_WindowingProto_GLFW PRIVATE SA_Windowing_SCommon)
 
 
 

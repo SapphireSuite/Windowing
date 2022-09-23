@@ -2,14 +2,10 @@
 
 # Entrypoints
 
-add_subdirectory(Prototype_Common)
+add_subdirectory(SCommon)
 
 if(SA_WINDOWING_GLFW_OPT)
 
 	add_subdirectory(Prototype_GLFW)
 
 endif()
-
-add_subdirectory(Prototype_All)
-
-add_subdirectory(UnitTests)

@@ -3,12 +3,13 @@
 #include <SA/Collections/Debug>
 using namespace SA;
 
-#include <main_common.hpp>
-#include <SA/Windowing/GLFW/GLFWWindowInterface.hpp>
+#include <SCommon/WindowApplication.hpp>
 
 int main()
 {
-	GLFW::WindowInterface interface;
+	SA::Debug::InitDefaultLogger();
 
-	return main_common(&interface);
+	SCommon::WindowApplication app;
+
+	return app.CreateAndRun<GLFW::WindowInterface>();
 }
