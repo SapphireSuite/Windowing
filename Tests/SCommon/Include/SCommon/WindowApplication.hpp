@@ -17,14 +17,14 @@ namespace SA
 		class WindowApplication
 		{
 		protected:
-			//AWindowInterface* mWindowIntf = nullptr;
+			AWindowInterface* mWindowIntf = nullptr;
 			AWindow* mWindow = nullptr;
 
-			virtual void Init(AWindowInterface* _win_intf);
-			virtual void UnInit(AWindowInterface* _win_intf);
+			virtual void Init();
+			virtual void UnInit();
 
-			virtual void Loop(AWindowInterface* _win_intf);
-			virtual void Update(AWindowInterface* _win_intf);
+			virtual void Loop();
+			virtual void Update();
 
 		public:
 			template <typename WindowInterfaceT = SelectedWindowInterface>

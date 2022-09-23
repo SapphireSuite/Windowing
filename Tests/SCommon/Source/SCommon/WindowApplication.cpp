@@ -6,17 +6,17 @@ namespace SA
 {
 	namespace SCommon
 	{
-		void WindowApplication::Init(AWindowInterface* _win_intf)
+		void WindowApplication::Init()
 		{
-			mWindow = _win_intf->CreateWindow();
+			mWindow = mWindowIntf->CreateWindow();
 		}
 
-		void WindowApplication::UnInit(AWindowInterface* _win_intf)
+		void WindowApplication::UnInit()
 		{
-			_win_intf->DestroyWindow(mWindow);
+			mWindowIntf->DestroyWindow(mWindow);
 		}
 
-		void WindowApplication::Loop(AWindowInterface* _win_intf)
+		void WindowApplication::Loop()
 		{
 			SA_LOG("Start Game loop.");
 
@@ -26,24 +26,26 @@ namespace SA
 
 		#endif
 			{
-				Update(_win_intf);
+				Update();
 			}
 
 			SA_LOG("End Game loop.");
 		}
 
-		void WindowApplication::Update(AWindowInterface* _win_intf)
+		void WindowApplication::Update()
 		{
-			_win_intf->GetInputInterface()->Update();
+			mWindowIntf->GetInputInterface()->Update();
 		}
 
 		int WindowApplication::Run(AWindowInterface* _win_intf)
 		{
-			Init(_win_intf);
+			mWindowIntf = _win_intf;
 
-			Loop(_win_intf);
+			Init();
 
-			UnInit(_win_intf);
+			Loop();
+
+			UnInit();
 
 			return 0;
 		}
