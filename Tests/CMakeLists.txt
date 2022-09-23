@@ -4,8 +4,12 @@
 
 add_subdirectory(SCommon)
 
-if(SA_WINDOWING_GLFW_OPT)
+if(SA_WINDOWING_BUILD_TESTS_OPT)
 
-	add_subdirectory(Prototype_GLFW)
+	if(SA_WINDOWING_GLFW_OPT)
 
-endif()
+		add_subdirectory(Prototype_GLFW)
+
+	endif()
+
+endif(SA_WINDOWING_BUILD_TESTS_OPT)
