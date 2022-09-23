@@ -17,4 +17,6 @@ target_link_libraries(SA_Windowing_SCommon PUBLIC SA_Windowing)
 
 ## Add SA_Windowing SCommon selected window interface.
 set(SA_WINDOWING_SCOMMON_SELECTED_INTERFACE_OPT "GLFW" CACHE STRING "Selected window interface for scommon implementation.")
+message("SA_Windowing SCommon selected window interface: ${SA_WINDOWING_SCOMMON_SELECTED_INTERFACE_OPT}")
+
 target_compile_definitions(SA_Windowing_SCommon PUBLIC SA_WINDOWING_SCOMMON_SELECTED_INTERFACE=${SA_WINDOWING_SCOMMON_SELECTED_INTERFACE_OPT})
