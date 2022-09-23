@@ -1,10 +1,10 @@
 // Copyright (c) 2022 Sapphire's Suite. All Rights Reserved.
 
-#include <GLFW/GLFWInputInterface.hpp>
+#include "GLFWInputInterface.hpp"
 
 #include <SA/Collections/Debug>
 
-#include <GLFW/GLFWAPI.hpp>
+#include "GLFWAPI.hpp"
 
 namespace SA
 {

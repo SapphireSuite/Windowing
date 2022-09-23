@@ -7,8 +7,6 @@
 
 #include <SA/Windowing/Base/AWindow.hpp>
 
-#include "GLFWAPI.hpp"
-
 /**
 *	\file GLFWWindow.hpp
 * 
@@ -18,6 +16,8 @@
 *	\{
 */
 
+struct GLFWwindow;
+struct GLFWmonitor;
 
 namespace SA
 {

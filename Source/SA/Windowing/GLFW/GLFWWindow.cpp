@@ -1,6 +1,8 @@
 // Copyright (c) 2022 Sapphire's Suite. All Rights Reserved.
 
-#include <GLFW/GLFWWindow.hpp>
+#include "GLFWWindow.hpp"
+
+#include "GLFWAPI.hpp"
 
 namespace SA
 {

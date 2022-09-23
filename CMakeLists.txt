@@ -16,20 +16,24 @@ SA_ConfigureProject(SA_Windowing)
 
 # Library
 
-add_library(SA_Windowing STATIC)
-SA_ConfigureTarget(TARGET SA_Windowing)
-SA_TargetSources(TARGET SA_Windowing
-	PUBLIC_FOLDER "Include/SA/Windowing/Base"
-	PRIVATE_FOLDER "Source/SA/Windowing/Base"
-	TOGGLE_INCLUDE_DIR OFF
+## Main
+add_library(SA_Windowing INTERFACE)
+SA_ConfigureTarget(SA_Windowing LINK INTERFACE)
+
+
+## Base
+add_library(SA_Windowing_Base STATIC)
+SA_ConfigureTarget(SA_Windowing_Base)
+SA_TargetSources(SA_Windowing_Base
+	PUBLIC_SRC_DIR "Include/SA/Windowing/Base"
+	PRIVATE_SRC_DIR "Source/SA/Windowing/Base"
 )
 
-## Manual include directory: custom target sources
-target_include_directories(SA_Windowing PUBLIC Include)
-target_include_directories(SA_Windowing PRIVATE Include/SA/Windowing)
-
 ### Link dependencies.
-target_link_libraries(SA_Windowing PUBLIC SA_Logger SA_Flags SA_Event SA_Maths SA_HI)
+target_link_libraries(SA_Windowing_Base PUBLIC SA_Logger SA_Flags SA_Event SA_Maths SA_HI)
+
+### Link to main lib.
+target_link_libraries(SA_Windowing INTERFACE SA_Windowing_Base)
 
 
 
@@ -47,12 +51,21 @@ if(SA_WINDOWING_GLFW_OPT)
 	# Compile git submodule ThirdParty/glfw instead
 	#find_package(glfw3 REQUIRED FATAL_ERROR)
 
-	target_compile_definitions(SA_Windowing PUBLIC SA_WINDOWING_GLFW)
-	SA_TargetSources(TARGET SA_Windowing
-		PUBLIC_FOLDER "Include/SA/Windowing/GLFW"
-		PRIVATE_FOLDER "Source/SA/Windowing/GLFW"
-		TOGGLE_INCLUDE_DIR OFF
+	add_library(SA_Windowing_GLFW STATIC)
+	SA_ConfigureTarget(SA_Windowing_GLFW)
+	SA_TargetSources(SA_Windowing_GLFW
+		PUBLIC_SRC_DIR "Include/SA/Windowing/GLFW"
+		PUBLIC_INCL_DIR "OFF"
+		PRIVATE_SRC_DIR "Source/SA/Windowing/GLFW"
 	)
+
+	target_link_libraries(SA_Windowing_GLFW
+		PUBLIC SA_Windowing_Base
+		PRIVATE glfw
+	)
+
+	### Link to main lib.
+	target_link_libraries(SA_Windowing INTERFACE SA_Windowing_GLFW)
 
 endif()
 

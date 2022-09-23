@@ -1,6 +1,6 @@
 // Copyright (c) 2022 Sapphire's Suite. All Rights Reserved.
 
-#include <Base/AInputInterface.hpp>
+#include "AInputInterface.hpp"
 
 namespace SA
 {
