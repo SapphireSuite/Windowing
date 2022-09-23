@@ -5,11 +5,35 @@ using namespace SA;
 
 #include <SCommon/WindowApplication.hpp>
 
+class SampleApp : public SCommon::WindowApplication
+{
+protected:
+	void Init() override final
+	{
+		SCommon::WindowApplication::Init();
+	}
+
+	void UnInit() override final
+	{
+		SCommon::WindowApplication::UnInit();
+	}
+
+	void Loop() override final
+	{
+		SCommon::WindowApplication::Loop();
+	}
+
+	void Update() override final
+	{
+		SCommon::WindowApplication::Update();
+	}
+};
+
 int main()
 {
 	SA::Debug::InitDefaultLogger();
 
-	SCommon::WindowApplication app;
+	SampleApp app;
 
 	return app.CreateAndRun<GLFW::WindowInterface>();
 }
