@@ -27,6 +27,8 @@ namespace SA
 			virtual void Update();
 
 		public:
+			int Run(AWindowInterface* _win_intf);
+
 			template <typename WindowInterfaceT = SelectedWindowInterface>
 			int CreateAndRun()
 			{
@@ -40,8 +42,6 @@ namespace SA
 
 				return res;
 			}
-
-			int Run(AWindowInterface* _win_intf);
 		};
 	}
 }
