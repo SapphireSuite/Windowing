@@ -42,6 +42,9 @@ target_link_libraries(SA_Windowing INTERFACE SA_Windowing_Base)
 ## Add SA_Windowing's tests to build tree.
 option(SA_WINDOWING_BUILD_TESTS_OPT "Should build SA_Windowing tests" OFF)
 
+## Add SA_Windowing's sample common to build tree.
+option(SA_WINDOWING_SCOMMON_OPT "Should build SA_Windowing sample common" OFF)
+
 
 ## GLFW
 option(SA_WINDOWING_GLFW_OPT "Should compile GLFW wrapper" ON)
@@ -75,7 +78,7 @@ endif()
 
 add_subdirectory(ThirdParty)
 
-if(SA_WINDOWING_BUILD_TESTS_OPT)
+if(SA_WINDOWING_BUILD_TESTS_OPT OR SA_WINDOWING_SCOMMON_OPT)
 
 	### Enable testing for this directory and below.
 	enable_testing()
