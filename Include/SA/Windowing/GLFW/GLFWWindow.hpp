@@ -95,6 +95,13 @@ namespace SA
 			void Close() override final;
 			bool ShouldClose() const override final;
 
+#if SA_RENDER_VULKAN_IMPL
+
+			VK::WindowSurfaceHandle VkCreateWindowSurfaceHandle(const VK::Instance& _instance) const override final;
+			void VkDestroyWindowSurfaceHandle(const VK::Instance& _instance, VK::WindowSurfaceHandle _surfaceHandle) const override final;
+
+#endif // SA_RENDER_VULKAN_IMPL
+
 			/**
 			*	\brief \e Getter of GLFW internal handle.
 			* 

@@ -10,6 +10,17 @@
 
 #include "WindowCreateInfos.hpp"
 
+#if SA_RENDER_VULKAN_IMPL
+
+namespace SA::VK
+{
+	class Instance;
+}
+
+#include <SA/Render/Vulkan/Surface/VkWindowSurfaceHandle.hpp>
+
+#endif
+
 /**
 *	\file AWindow.hpp
 *	
@@ -147,6 +158,13 @@ namespace SA
 		*	\returns current closed state.
 		*/
 		virtual bool ShouldClose() const = 0;
+
+#if SA_RENDER_VULKAN_IMPL
+
+		virtual VK::WindowSurfaceHandle VkCreateWindowSurfaceHandle(const VK::Instance& _instance) const = 0;
+		virtual void VkDestroyWindowSurfaceHandle(const VK::Instance& _instance, VK::WindowSurfaceHandle _surfaceHandle) const = 0;
+
+#endif // SA_RENDER_VULKAN_IMPL
 	};
 }
 

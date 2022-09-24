@@ -4,6 +4,12 @@
 
 #include "GLFWAPI.hpp"
 
+#if SA_RENDER_VULKAN_IMPL
+
+#include <SA/Render/Vulkan/VkInstance.hpp>
+
+#endif
+
 namespace SA
 {
 	namespace GLFW
@@ -289,6 +295,32 @@ namespace SA
 
 			return bestMonitor;
 		}
+
+#if SA_RENDER_VULKAN_IMPL
+
+		VK::WindowSurfaceHandle Window::VkCreateWindowSurfaceHandle(const VK::Instance& _instance) const
+		{
+			CheckCreated();
+
+			VK::WindowSurfaceHandle vkSurface = VK_NULL_HANDLE;
+
+			SA_VK_ASSERT(glfwCreateWindowSurface(_instance, mHandle, nullptr, &vkSurface), L"Failed to create VkRenderSurface from GLFW window!");
+
+			SA_LOG(L"Window Surface Handle [" << vkSurface << L"] created.", Infos, SA/Windowing/GLFW);
+
+			return vkSurface;
+		}
+
+		void Window::VkDestroyWindowSurfaceHandle(const VK::Instance& _instance, VK::WindowSurfaceHandle _surfaceHandle) const
+		{
+			CheckCreated();
+
+			vkDestroySurfaceKHR(_instance, _surfaceHandle, nullptr);
+
+			SA_LOG(L"Window Surface Handle [" << _surfaceHandle << L"] destroyed.", Infos, SA/Windowing/GLFW);
+		}
+
+#endif // SA_RENDER_VULKAN_IMPL
 
 		GLFWwindow* Window::GetHandle() const
 		{
