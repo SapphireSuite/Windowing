@@ -32,6 +32,11 @@ SA_TargetSources(SA_Windowing_Base
 ### Link dependencies.
 target_link_libraries(SA_Windowing_Base PUBLIC SA_Logger SA_Flags SA_Event SA_Maths SA_HI)
 
+### SA_Render target already in build-tree: add link for custom implementations.
+if(TARGET SA_Render)
+	target_link_libraries(SA_Windowing_Base PUBLIC SA_Render)
+endif()
+
 ### Link to main lib.
 target_link_libraries(SA_Windowing INTERFACE SA_Windowing_Base)
 

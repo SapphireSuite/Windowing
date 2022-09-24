@@ -60,6 +60,8 @@ namespace SA
 
 		AWindow* WindowInterface::CreateWindow(const WindowCreateInfos& _infos)
 		{
+			CheckCreated();
+
 			Window* const win = mWindows.Emplace();
 			
 			win->Create(_infos);
@@ -69,7 +71,28 @@ namespace SA
 
 		void WindowInterface::DestroyWindow(AWindow* _window)
 		{
+			CheckCreated();
+
 			mWindows.Erase(_window);
 		}
+
+	#if SA_RENDER_VULKAN_IMPL
+
+		bool WindowInterface::VkQueryRequiredExtensions(std::vector<const char*>& _extensions) const
+		{
+			CheckCreated();
+
+			uint32_t extensionCount = 0;
+			const char** rawExtensions = nullptr;
+
+			rawExtensions = glfwGetRequiredInstanceExtensions(&extensionCount);
+
+			_extensions.reserve(extensionCount);
+			_extensions.insert(_extensions.end(), rawExtensions, rawExtensions + extensionCount);
+
+			return true;
+		}
+
+	#endif
 	}
 }

@@ -32,6 +32,12 @@ namespace SA
 
 			AWindow* CreateWindow(const WindowCreateInfos& _infos) override final;
 			void DestroyWindow(AWindow* _window) override final;
+
+		#if SA_RENDER_VULKAN_IMPL
+
+			bool VkQueryRequiredExtensions(std::vector<const char*>& _extensions) const override final;
+
+		#endif
 		};
 	}
 }

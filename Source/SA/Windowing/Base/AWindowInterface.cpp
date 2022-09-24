@@ -18,4 +18,15 @@ namespace SA
 	{
 		HI::Interface::Clear();
 	}
+
+#if SA_RENDER_VULKAN_IMPL
+
+	bool AWindowInterface::VkQueryRequiredExtensions(std::vector<const char*>& _extensions) const
+	{
+		(void)_extensions;
+
+		return true;
+	}
+
+#endif
 }

@@ -41,6 +41,12 @@ namespace SA
 		*	\param[in] _window	Window to destroy.
 		*/
 		virtual void DestroyWindow(AWindow* _window) = 0;
+
+	#if SA_RENDER_VULKAN_IMPL
+
+		virtual bool VkQueryRequiredExtensions(std::vector<const char*>& _extensions) const;
+
+	#endif
 	};
 }
 

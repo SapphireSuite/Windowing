@@ -12,6 +12,12 @@
 *	\{
 */
 
+#if SA_RENDER_VULKAN_IMPL
+
+	#include <vulkan/vulkan.h>
+
+#endif
+
 #include <GLFW/glfw3.h>
 
 /** \} */
